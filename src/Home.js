@@ -1,5 +1,6 @@
 import Title from "./Title";
 import Selector from "./Selector";
+import Button from "./Button";
 
 const Home = () => {
     return (
@@ -16,7 +17,10 @@ const Home = () => {
         descriptor = "How many questions would you like?"
         buttonNames = {['10', '20', '50']}
         handler = ""/>
+        <Button 
+        text = "Play"/>
         </div>
+        
     );
 }
 
