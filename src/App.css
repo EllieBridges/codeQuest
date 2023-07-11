@@ -3,6 +3,29 @@
 
 
 
+h1,
+h2 {
+    font-family: 'Bungee Hairline', cursive;
+}
+
+h3 {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 2rem;
+}
+
+
+
+li {
+    list-style: upper-latin;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 2rem;
+}
+
+ul li::before {
+    color: #c4ff00;
+}
+
+
 /* Classes */
 /* Containers */
 .homeContainer {
@@ -21,6 +44,7 @@
 
 .lengthContainer {
     margin: 100px;
+    margin-bottom: 50px;
 }
 
 .buttonContainer {
@@ -28,7 +52,40 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+}
 
+.quizContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.questionCard {
+    text-align: center;
+}
+
+.optionsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    width: 50vw;
+}
+
+.optionContainer {
+    margin: 50px;
+    padding: 40px;
+    width: fit-content;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #469bbd;
+}
+
+.optionContainer:hover {
+    background-color: #469bbd;
+    border-color: #c4ff00;
 }
 
 .title {
@@ -51,7 +108,7 @@
 
 .button {
     font-family: 'Source Code Pro', monospace;
-    font-size: 1rem;
+    font-size: 1.5rem;
     background-color: #469bbd;
     color: #2c349c;
     border-radius: 15px;
@@ -71,6 +128,12 @@
 
 .button:hover {
     transform: scale(1.1);
+}
+
+.question {
+    margin: 50px;
+    font-size: 3rem;
+    color: #c4ff00;
 }
 
 /* Pretty */

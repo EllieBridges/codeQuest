@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom'
 import Title from "./Title";
 import Selector from "./Selector";
 import Button from "./SelectorButton";
 
 
-//API Key - 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
-//Header - Authorization: Bearer OPENAI_API_KEY
-
 const Home = () => {
 
+    const navigate = useNavigate()
 
     const quizType = {};
 
@@ -18,7 +16,21 @@ const Home = () => {
         console.log(quizType)
     }
 
+    const [enabled, SetEnabled] = useState(false);
 
+    const startQuiz = () => {
+        if (quizType['level'] && quizType['length']) {
+            SetEnabled(true)
+            navigate('/quiz')
+
+        }
+        else if (quizType['level']) {
+            alert("Choose how many questions you'd like to begin playing")
+        }
+        else {
+            alert("Choose a level to begin the quiz")
+        }
+    }
 
     return (
         <div className="homeContainer">
@@ -28,21 +40,21 @@ const Home = () => {
                 descriptor="Choose a knowledge level"
                 buttonNames={['Beginner', 'Intermediate', 'Wizard']}
                 setQuizType={setQuizType}
-
             />
+
             <Selector
                 type="length"
                 descriptor="How many questions would you like?"
                 buttonNames={['3', '5', '10']}
                 setQuizType={setQuizType}
-
             />
+
             <Button
                 text="Play"
-                enabled={quizType['length'] && quizType['level']}
-                onClick={() => { alert("Button clicked") }}
+                enabled={enabled}
+                onClick={() => { startQuiz() }}
+                route='/quiz'
             />
-
         </div>
 
     );

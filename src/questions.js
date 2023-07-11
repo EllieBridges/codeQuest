@@ -52,9 +52,6 @@ const beginnerQuestions = [
 ];
 
 
-
-
-
 const intermediateQuestions = [
     {
         question: 'What is the purpose of a constructor in Java?',
@@ -180,7 +177,6 @@ function shuffle(array) {
 
     return array;
 }
-
 
 
 for (let i = 0; i < 10; i++) {
