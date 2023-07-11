@@ -1,76 +1,166 @@
-function createBeginnerQuestions() {
-    const questions = [];
+const beginnerQuestions = [
+    {
+        question: 'What is the capital of France?',
+        options: ['Paris', 'London', 'Madrid'],
+        answer: 'Paris'
+    },
+    {
+        question: 'What does HTML stand for?',
+        options: ['Hyperlinks and Text Markup Language', 'Home Tool Markup Language', 'Hypertext Markup Language'],
+        answer: 'Hypertext Markup Language'
+    },
+    {
+        question: 'Which of the following is NOT a programming language?',
+        options: ['Java', 'HTML', 'Python'],
+        answer: 'HTML'
+    },
+    {
+        question: 'What symbol is used to access elements in an array in JavaScript?',
+        options: ['Curly braces', 'Square brackets', 'Parentheses'],
+        answer: 'Square brackets'
+    },
+    {
+        question: 'What does CSS stand for?',
+        options: ['Cascading Style Sheets', 'Colorful Style Sheets', 'Computer Style Sheets'],
+        answer: 'Cascading Style Sheets'
+    },
+    {
+        question: 'What is the file extension for a JavaScript file?',
+        options: ['.html', '.js', '.css'],
+        answer: '.js'
+    },
+    {
+        question: 'Which of the following is used to style web pages?',
+        options: ['JavaScript', 'HTML', 'CSS'],
+        answer: 'CSS'
+    },
+    {
+        question: 'What does IDE stand for?',
+        options: ['Integrated Development Environment', 'Interactive Development Environment', 'Integrated Developer Environment'],
+        answer: 'Integrated Development Environment'
+    },
+    {
+        question: 'What is the result of 5 + "3" in JavaScript?',
+        options: ['8', '53', 'Error'],
+        answer: '53'
+    },
+    {
+        question: 'Which of the following is a loop in JavaScript?',
+        options: ['if', 'for', 'switch'],
+        answer: 'for'
+    }
+];
 
-    // Question 1
-    const question1 = "What is the correct file extension for a JavaScript file?";
-    const answers1 = [".js", ".html", ".css"];
-    const correctAnswer1 = ".js";
-    questions.push({ question: question1, answers: answers1, answer: correctAnswer1 });
 
-    // Question 2
-    const question2 = "Which programming language is used for building web pages?";
-    const answers2 = ["HTML", "Java", "Python"];
-    const correctAnswer2 = "HTML";
-    questions.push({ question: question2, answers: answers2, answer: correctAnswer2 });
 
-    // Question 3
-    const question3 = "Which of the following is a version control system?";
-    const answers3 = ["Git", "Gulp", "Grunt"];
-    const correctAnswer3 = "Git";
-    questions.push({ question: question3, answers: answers3, answer: correctAnswer3 });
 
-    // Question 4
-    const question4 = "Which CSS property is used to change the text color?";
-    const answers4 = ["color", "font-size", "background-color"];
-    const correctAnswer4 = "color";
-    questions.push({ question: question4, answers: answers4, answer: correctAnswer4 });
 
-    // Question 5
-    const question5 = "What does HTML stand for?";
-    const answers5 = [
-        "HyperText Markup Language",
-        "Home Tool Markup Language",
-        "Hyperlinks and Text Markup Language"
-    ];
-    const correctAnswer5 = "HyperText Markup Language";
-    questions.push({ question: question5, answers: answers5, answer: correctAnswer5 });
+const intermediateQuestions = [
+    {
+        question: 'What is the purpose of a constructor in Java?',
+        options: ['To initialize an object', 'To destroy an object', 'To define a class'],
+        answer: 'To initialize an object'
+    },
+    {
+        question: 'Which of the following data structures is based on the LIFO (Last In, First Out) principle?',
+        options: ['Queue', 'Stack', 'Heap'],
+        answer: 'Stack'
+    },
+    {
+        question: 'What is the time complexity of binary search in a sorted array?',
+        options: ['O(1)', 'O(n)', 'O(log n)'],
+        answer: 'O(log n)'
+    },
+    {
+        question: 'What does CSS stand for?',
+        options: ['Cascading Style Sheets', 'Creative Style Sheets', 'Computer Style Sheets'],
+        answer: 'Cascading Style Sheets'
+    },
+    {
+        question: 'Which of the following is NOT a relational database management system (RDBMS)?',
+        options: ['MySQL', 'MongoDB', 'Oracle'],
+        answer: 'MongoDB'
+    },
+    {
+        question: 'What does MVC stand for?',
+        options: ['Model View Controller', 'Model Validation Configuration', 'Managed View Control'],
+        answer: 'Model View Controller'
+    },
+    {
+        question: 'Which programming language is NOT statically typed?',
+        options: ['Java', 'JavaScript', 'C++'],
+        answer: 'JavaScript'
+    },
+    {
+        question: 'What is the result of 3 + 2 + "7" in JavaScript?',
+        options: ['57', '12', '37'],
+        answer: '57'
+    },
+    {
+        question: 'What is the default port number for HTTP?',
+        options: ['80', '443', '8080'],
+        answer: '80'
+    },
+    {
+        question: 'Which of the following is an agile software development methodology?',
+        options: ['Waterfall', 'Scrum', 'Spiral'],
+        answer: 'Scrum'
+    }
+];
 
-    // Question 6
-    const question6 = "Which operator is used for strict equality comparison in JavaScript?";
-    const answers6 = ["===", "==", "!="];
-    const correctAnswer6 = "===";
-    questions.push({ question: question6, answers: answers6, answer: correctAnswer6 });
 
-    // Question 7
-    const question7 = "Which function is used to print output in JavaScript?";
-    const answers7 = ["console.log()", "alert()", "document.write()"];
-    const correctAnswer7 = "console.log()";
-    questions.push({ question: question7, answers: answers7, answer: correctAnswer7 });
-
-    // Question 8
-    const question8 = "Which data type is used to represent true/false values in JavaScript?";
-    const answers8 = ["Boolean", "String", "Number"];
-    const correctAnswer8 = "Boolean";
-    questions.push({ question: question8, answers: answers8, answer: correctAnswer8 });
-
-    // Question 9
-    const question9 = "Which loop is used to iterate over elements in an array in JavaScript?";
-    const answers9 = ["for", "while", "do-while"];
-    const correctAnswer9 = "for";
-    questions.push({ question: question9, answers: answers9, answer: correctAnswer9 });
-
-    // Question 10
-    const question10 = "What is the correct syntax for a function declaration in JavaScript?";
-    const answers10 = [
-        "function myFunction() {}",
-        "myFunction = function() {}",
-        "() => {}"
-    ];
-    const correctAnswer10 = "function myFunction() {}";
-    questions.push({ question: question10, answers: answers10, answer: correctAnswer10 });
-
-    return questions;
-}
+const wizardQuestions = [
+    {
+        question: 'Which design pattern is used to separate object construction from its representation?',
+        options: ['Singleton', 'Builder', 'Prototype'],
+        answer: 'Builder'
+    },
+    {
+        question: 'What is the time complexity of a binary heap operations like insertion and deletion?',
+        options: ['O(1)', 'O(log n)', 'O(n)'],
+        answer: 'O(log n)'
+    },
+    {
+        question: 'Which of the following is a functional programming language?',
+        options: ['Java', 'Python', 'Haskell'],
+        answer: 'Haskell'
+    },
+    {
+        question: 'Which encryption algorithm is commonly used for secure communication over the Internet?',
+        options: ['AES', 'DES', 'RSA'],
+        answer: 'RSA'
+    },
+    {
+        question: 'What is the purpose of the SOLID principles in software development?',
+        options: ['To write bug-free code', 'To improve code readability', 'To design robust and maintainable software'],
+        answer: 'To design robust and maintainable software'
+    },
+    {
+        question: 'Which of the following is NOT a characteristic of microservices architecture?',
+        options: ['Loose coupling', 'Monolithic structure', 'Independent deployment'],
+        answer: 'Monolithic structure'
+    },
+    {
+        question: 'Which sorting algorithm has the best average-case time complexity?',
+        options: ['Bubble Sort', 'Merge Sort', 'Selection Sort'],
+        answer: 'Merge Sort'
+    },
+    {
+        question: 'What is the purpose of a closure in JavaScript?',
+        options: ['To protect sensitive data', 'To optimize code execution', 'To preserve access to variables'],
+        answer: 'To preserve access to variables'
+    },
+    {
+        question: 'What is the difference between unit testing and integration testing?',
+        options: ['Unit testing verifies individual components', 'Integration testing verifies interactions between components', 'Both are the same'],
+        answer: 'Integration testing verifies interactions between components'
+    },
+    {
+        question: 'Which of the following tools is commonly used for version control in software development?',
+        options: ['Git', 'Docker', 'Jenkins'],
+        answer: 'Git'
+    }
+];
 
 
 function shuffle(array) {
@@ -91,13 +181,12 @@ function shuffle(array) {
     return array;
 }
 
-const beginnerQuestions = createBeginnerQuestions();
 
 
-for (let i = 1; i < 11; i++) {
-    shuffle(`beginnerQuestions${[i]}.answers${i}`)
+for (let i = 0; i < 10; i++) {
+    console.log(i)
+    shuffle(beginnerQuestions[i].options)
     //shuffle(beginnerQuestions);
 }
 
-console.log(`beginnerQuestions${[1]}.answers${1}`)
 console.log(beginnerQuestions);

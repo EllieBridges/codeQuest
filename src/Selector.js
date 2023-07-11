@@ -1,14 +1,25 @@
-import React from "react"
-import Button from "./Button"
+import React, { useState } from "react"
+import Button from "./SelectorButton"
 
-const Selector = ({ type, descriptor, buttonNames, handler }) => {
+const Selector = ({ type, descriptor, buttonNames, setQuizType }) => {
+
+    const [selected, setSelected] = useState()
+
+    const handleClick = (buttonName) => {
+        setSelected(buttonName)
+        setQuizType(type, buttonName)
+    }
+
     return (
         <div className={`${type}Container`}>
             <h2 className='descriptor'>{descriptor}</h2>
             <div className={`buttonContainer`}>
                 {buttonNames.map((buttonName) => {
                     return <Button
-                        text={buttonName} />
+                        text={buttonName}
+                        onClick={handleClick}
+                        highlight={selected === buttonName}
+                    />
                 })}
             </div>
         </div>

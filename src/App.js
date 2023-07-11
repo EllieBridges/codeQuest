@@ -5,14 +5,15 @@ import Home from "./Home";
 
 
 export default function App() {
-    return (
-        <BrowserRouter>
-        <Routes>
-        <Route path= "/" element = {< Layout />}>
-            <Route index element = {< Home />} />     
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={< Layout />}>
+          <Route index element={< Home />} />
+          {/* <Route path='quiz' element={< Quiz />} /> */}
         </Route>
-        </Routes>
-          </BrowserRouter>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,43 +1,24 @@
+import React, { useState } from 'react';
+
 import Title from "./Title";
 import Selector from "./Selector";
-import Button from "./Button";
-import axios from "axios";
+import Button from "./SelectorButton";
+
 
 //API Key - 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
 //Header - Authorization: Bearer OPENAI_API_KEY
 
 const Home = () => {
 
-    const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
-    const API_KEY = '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';
 
-    const totalQuestions = ['3', '5', '10']
+    const quizType = {};
 
-    // Prompt for the conversation
-    const prompt = [`Create ${totalQuestions[0]} multiple choice questions with 3 potential answers for beginner software developers. Return this as an array of objects, with each object key the question and the value an array of potential answers`,];
-
-
-
-    // Send API request
-    const clickHandler = (type) => {
-        axios.post(API_ENDPOINT, {
-            prompt: prompt,
-        }, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}`
-            }
-        })
-            .then(response => {
-                // Handle API response
-                const data = response.data;
-                console.log(data.choices[0].text);
-            })
-            .catch(error => {
-                // Handle error
-                console.error('Error:', error);
-            });
+    const setQuizType = (quizParam, value) => {
+        quizType[quizParam] = value;
+        console.log(quizType)
     }
+
+
 
     return (
         <div className="homeContainer">
@@ -46,16 +27,22 @@ const Home = () => {
                 type="level"
                 descriptor="Choose a knowledge level"
                 buttonNames={['Beginner', 'Intermediate', 'Wizard']}
-                handler={clickHandler}
+                setQuizType={setQuizType}
+
             />
             <Selector
                 type="length"
                 descriptor="How many questions would you like?"
                 buttonNames={['3', '5', '10']}
-                handler={clickHandler}
+                setQuizType={setQuizType}
+
             />
             <Button
-                text="Play" />
+                text="Play"
+                enabled={quizType['length'] && quizType['level']}
+                onClick={() => { alert("Button clicked") }}
+            />
+
         </div>
 
     );

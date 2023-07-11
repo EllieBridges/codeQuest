@@ -1,0 +1,6 @@
+
+const PlayButton = (onClick, text, enabled) => {
+    return <button onClick={`() => ${onClick}${(text)}`} className={`${text} button`}>{text}</button>
+}
+
+export default PlayButton;

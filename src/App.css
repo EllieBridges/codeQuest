@@ -59,6 +59,10 @@
     margin: 15px;
 }
 
+.clicked {
+    background-color: #FF5F1F;
+}
+
 .Play {
     font-size: 2rem;
     background-color: #c4ff00;
