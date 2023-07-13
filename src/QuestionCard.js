@@ -1,10 +1,7 @@
 import OptionCard from "./OptionCard";
 
-const QuestionCard = ({ question, options }) => {
+const QuestionCard = ({ question, options, nextQuestion }) => {
 
-    const submitAnswer = () => {
-        alert('Answer clicked')
-    }
 
     return (
         <div className="questionCard">
@@ -13,7 +10,7 @@ const QuestionCard = ({ question, options }) => {
                 {options.map((option) => {
                     return (
                         <OptionCard
-                            clickHandler={submitAnswer}
+                            nextQuestion={nextQuestion}
                             option={option}
                         />
                     )

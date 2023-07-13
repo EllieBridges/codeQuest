@@ -1,4 +1,4 @@
-const beginnerQuestions = [
+const beginner = [
     {
         question: 'What is the capital of France?',
         options: ['Paris', 'London', 'Madrid'],
@@ -52,7 +52,7 @@ const beginnerQuestions = [
 ];
 
 
-const intermediateQuestions = [
+const intermediate = [
     {
         question: 'What is the purpose of a constructor in Java?',
         options: ['To initialize an object', 'To destroy an object', 'To define a class'],
@@ -106,7 +106,7 @@ const intermediateQuestions = [
 ];
 
 
-const wizardQuestions = [
+const wizard = [
     {
         question: 'Which design pattern is used to separate object construction from its representation?',
         options: ['Singleton', 'Builder', 'Prototype'],
@@ -180,9 +180,49 @@ function shuffle(array) {
 
 
 for (let i = 0; i < 10; i++) {
-    console.log(i)
-    shuffle(beginnerQuestions[i].options)
-    //shuffle(beginnerQuestions);
+    shuffle(beginner[i].options)
+    shuffle(intermediate[i].options)
+    shuffle(wizard[i].options)
+
+}
+const getIndexes = (len) => {
+
+    let chosenIndexes = [];
+
+    for (let i = 0; i < len; i) {
+        const randomIndex = Math.floor(Math.random() * len);
+        if (!chosenIndexes.includes(randomIndex)) {
+            chosenIndexes.push(randomIndex)
+            i++
+        }
+    }
+    return chosenIndexes;
+};
+
+
+export const getQuestions = (lev, len) => {
+    const numArr = getIndexes(len);
+    const level = lev.toLowerCase();
+
+    if (level === 'beginner') {
+        const quizQuestions = numArr.map((index) => beginner[index])
+        return quizQuestions;
+    }
+    else if (level === 'intermediate') {
+        const quizQuestions = numArr.map((index) => intermediate[index])
+        return quizQuestions;
+    }
+    else if (level === 'wizard') {
+        const quizQuestions = numArr.map((index) => wizard[index])
+        return quizQuestions;
+    }
+    else {
+        alert('There is an error, please refresh.')
+    }
+
 }
 
-console.log(beginnerQuestions);
+
+
+
+

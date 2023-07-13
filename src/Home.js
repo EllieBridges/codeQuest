@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Title from "./Title";
 import Selector from "./Selector";
 import Button from "./SelectorButton";
+import { getQuestions } from './questions';
 
 
 const Home = () => {
@@ -21,8 +22,7 @@ const Home = () => {
     const startQuiz = () => {
         if (quizType['level'] && quizType['length']) {
             SetEnabled(true)
-            navigate('/quiz')
-
+            navigate(`/quiz?length=${quizType['length']}&level=${quizType['level']}`)
         }
         else if (quizType['level']) {
             alert("Choose how many questions you'd like to begin playing")
