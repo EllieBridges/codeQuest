@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSearchParams } from 'react-router-dom';
-
 import { getQuestions } from './questions';
 import QuestionCard from "./QuestionCard";
+
+
 
 
 const Quiz = () => {
@@ -11,26 +12,39 @@ const Quiz = () => {
 
     const [count, setCount] = useState(0);
 
-    const quizQuestions = getQuestions(level, length)
+    const quizQuestions = useRef(getQuestions(level, length));
 
     const nextQuestion = () => {
         setCount(count + 1)
     }
-    console.log(quizQuestions)
 
-    if (count < length) {
-        return (
-            <div className='quizContainer'>
-                <QuestionCard
-                    question={quizQuestions[count].question}
-                    options={quizQuestions[count].options}
-                    nextQuestion={nextQuestion}
-                />
-            </div>
+    let points = useRef(0);
 
-        )
+    const setPlayerScore = (option) => {
+
+        if (quizQuestions.current[count].answer === option) {
+            ++points
+        }
+        return points
     }
+
+
+
+    return (
+        (count < length) ? (<div className='quizContainer'>
+            <QuestionCard
+                question={quizQuestions.current[count].question}
+                options={quizQuestions.current[count].options}
+                nextQuestion={nextQuestion}
+                setPlayerScore={setPlayerScore}
+            />
+        </div>) : (<div>{`GAME OVER ${points.current}`}</div>)
+    )
+
+
+
 }
+
 
 
 export default Quiz;

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Title from "./Title";
 import Selector from "./Selector";
 import Button from "./SelectorButton";
-import { getQuestions } from './questions';
+
 
 
 const Home = () => {

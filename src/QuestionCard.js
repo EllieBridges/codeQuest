@@ -1,6 +1,6 @@
 import OptionCard from "./OptionCard";
 
-const QuestionCard = ({ question, options, nextQuestion }) => {
+const QuestionCard = ({ question, options, nextQuestion, setPlayerScore }) => {
 
 
     return (
@@ -12,6 +12,7 @@ const QuestionCard = ({ question, options, nextQuestion }) => {
                         <OptionCard
                             nextQuestion={nextQuestion}
                             option={option}
+                            setPlayerScore={setPlayerScore}
                         />
                     )
                 })}

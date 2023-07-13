@@ -1,6 +1,9 @@
-const OptionCard = ({ nextQuestion, option }) => {
+const OptionCard = ({ nextQuestion, setPlayerScore, option }) => {
 
-    const handleClick = () => { nextQuestion() }
+    const handleClick = () => {
+        nextQuestion()
+        setPlayerScore(option)
+    }
 
     return (
         <li className="optionContainer" onClick={handleClick}>
