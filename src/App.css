@@ -74,6 +74,11 @@ ul li::before {
     width: 50vw;
 }
 
+.optionContainer:hover {
+    background-color: #469bbd;
+    border-color: #c4ff00;
+}
+
 .optionContainer {
     margin: 50px;
     padding: 40px;
@@ -83,10 +88,7 @@ ul li::before {
     border-color: #469bbd;
 }
 
-.optionContainer:hover {
-    background-color: #469bbd;
-    border-color: #c4ff00;
-}
+
 
 .title {
     font-family: 'Bungee Hairline', cursive;

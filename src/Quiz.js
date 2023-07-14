@@ -2,9 +2,7 @@ import React, { useRef, useState } from "react";
 import { useSearchParams } from 'react-router-dom';
 import { getQuestions } from './questions';
 import QuestionCard from "./QuestionCard";
-
-
-
+import EndGame from "./EndGame";
 
 const Quiz = () => {
     const [searchParams] = useSearchParams();
@@ -23,7 +21,8 @@ const Quiz = () => {
     const setPlayerScore = (option) => {
 
         if (quizQuestions.current[count].answer === option) {
-            ++points
+            points.current++
+            console.log(points)
         }
         return points
     }
@@ -38,13 +37,15 @@ const Quiz = () => {
                 nextQuestion={nextQuestion}
                 setPlayerScore={setPlayerScore}
             />
-        </div>) : (<div>{`GAME OVER ${points.current}`}</div>)
+        </div>)
+            :
+            (<EndGame
+                gameLength={length}
+                gameLevel={level}
+                finalScore={points.current}
+            />)
     )
 
-
-
 }
-
-
 
 export default Quiz;
