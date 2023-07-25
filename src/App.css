@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Bungee+Hairline&family=Source+Code+Pro&display=swap');
 
-
+body {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
 
 
 h1,
@@ -10,7 +14,7 @@ h2 {
 
 h3 {
     font-family: 'Source Code Pro', monospace;
-    font-size: 2rem;
+
 }
 
 
@@ -21,8 +25,13 @@ li {
     font-size: 2rem;
 }
 
-ul li::before {
+ol li::before {
     color: #c4ff00;
+}
+
+ol {
+    padding-inline-start: 0px;
+    margin: 0px;
 }
 
 
@@ -56,12 +65,16 @@ ul li::before {
 
 .quizContainer {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
 
 .questionCard {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
     text-align: center;
 }
 
@@ -69,9 +82,8 @@ ul li::before {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     text-align: center;
-    width: 50vw;
+    justify-content: center;
 }
 
 .optionContainer:hover {
@@ -80,12 +92,26 @@ ul li::before {
 }
 
 .optionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 50px;
-    padding: 40px;
-    width: fit-content;
+    padding: 0px;
+    width: 350px;
+    height: 200px;
     border-style: solid;
     border-radius: 15px;
     border-color: #469bbd;
+
+}
+
+.endGameContainer {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100vh;
 }
 
 
@@ -133,9 +159,41 @@ ul li::before {
 }
 
 .question {
-    margin: 50px;
+    display: flex;
+    margin: 50px auto;
     font-size: 3rem;
     color: #c4ff00;
+}
+
+.option {
+    font-size: 1.5rem;
+    /* justify-content: 'center';
+    padding: auto 0px; */
+
+}
+
+
+@media only screen and (max-width: 800px) {
+    .optionsContainer {
+        flex-direction: column;
+    }
+
+    .optionContainer {
+        width: 200px;
+        height: 140px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .question {
+        font-size: 2rem;
+    }
+
+    .button {}
+
+    .option {
+        font-size: 1.5rem;
+    }
 }
 
 /* Pretty */

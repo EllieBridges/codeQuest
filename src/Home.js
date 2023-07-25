@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import Title from "./Title";
-import Selector from "./Selector";
-import Button from "./SelectorButton";
+import Title from './Title';
+import Selector from './Selector';
+import PlayButton from './PlayButton';
 
 
 
@@ -17,11 +16,9 @@ const Home = () => {
         console.log(quizType)
     }
 
-    const [enabled, SetEnabled] = useState(false);
-
     const startQuiz = () => {
+        console.log(quizType, "blahhhhh")
         if (quizType['level'] && quizType['length']) {
-            SetEnabled(true)
             navigate(`/quiz?length=${quizType['length']}&level=${quizType['level']}`)
         }
         else if (quizType['level']) {
@@ -34,7 +31,9 @@ const Home = () => {
 
     return (
         <div className="homeContainer">
-            <Title />
+            <Title
+                text="CodeQuest"
+                slogan="Test Your Knowledge" />
             <Selector
                 type="level"
                 descriptor="Choose a knowledge level"
@@ -49,12 +48,17 @@ const Home = () => {
                 setQuizType={setQuizType}
             />
 
-            <Button
+            <PlayButton
                 text="Play"
-                enabled={enabled}
-                onClick={() => { startQuiz() }}
+                onClick={startQuiz}
                 route='/quiz'
             />
+            <div className="bg-animation">
+                <div id="stars"></div>
+                <div id="stars2"></div>
+                <div id="stars3"></div>
+                <div id="stars4"></div>
+            </div>
         </div>
 
     );

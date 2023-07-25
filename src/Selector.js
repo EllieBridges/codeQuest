@@ -14,8 +14,9 @@ const Selector = ({ type, descriptor, buttonNames, setQuizType }) => {
         <div className={`${type}Container`}>
             <h2 className='descriptor'>{descriptor}</h2>
             <div className={`buttonContainer`}>
-                {buttonNames.map((buttonName) => {
+                {buttonNames.map((buttonName, i) => {
                     return <Button
+                        key={i}
                         text={buttonName}
                         onClick={handleClick}
                         highlight={selected === buttonName}
