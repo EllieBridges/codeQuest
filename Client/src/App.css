@@ -114,6 +114,12 @@ ol {
     height: 100vh;
 }
 
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
 
 
 .title {
@@ -172,6 +178,25 @@ ol {
 
 }
 
+.loginInput {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.5rem;
+    background-color: #469bbd;
+    color: #2c349c;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.signInTitle {
+    font-size: 3rem;
+    color: #c4ff00;
+}
+
+.loginButton {
+    background-color: #FF5F1F;
+}
+
 
 @media only screen and (max-width: 800px) {
     .optionsContainer {
@@ -194,6 +219,8 @@ ol {
     .option {
         font-size: 1.5rem;
     }
+
+
 }
 
 /* Pretty */

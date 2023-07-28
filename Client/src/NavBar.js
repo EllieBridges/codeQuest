@@ -12,7 +12,7 @@ const NavBar = () => {
       <AppBar position="static">
         <Toolbar sx={{ bgcolor: "#0d021a" }}>
           <Link to="/">HOME</Link>
-          <Button color="inherit">LOGIN</Button>
+          <Link to="/login">LOGIN</Link>
         </Toolbar>
       </AppBar>
     </Box>
