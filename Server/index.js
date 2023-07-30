@@ -6,8 +6,12 @@ const port = 3001;
 
 const cors = require('cors');
 
+const jwt = require('jsonwebtoken');
+
 // Database
 const dbFuncs = require('./database');
+
+const jwtKey = 'Melons'
 
 
 // Middleware
@@ -47,6 +51,8 @@ app.post('/login', async (req, res) => {
         return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    return res.status(200).json({ message: 'Authentication successful', user });
+    const token = jwt.sign({ username: user.username }, jwtKey);
+
+    return res.status(200).json({ message: 'Authentication successful', token });
 });
 
