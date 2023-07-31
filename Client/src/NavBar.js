@@ -11,7 +11,7 @@ const NavBar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar sx={{ bgcolor: "#0d021a" }}>
-          <Link to="/">HOME</Link>
+          <Link to="/home">HOME</Link>
           <Link to="/login" >LOGIN</Link>
         </Toolbar>
       </AppBar>

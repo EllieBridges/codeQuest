@@ -18,7 +18,8 @@ const Login = () => {
                 password: password
             })
             if (response.data.token && response.status === 200) {
-                navigate("/")
+                sessionStorage.setItem('userToken', response.data.token)
+                navigate("/home")
             }
             else {
                 alert("Something gone went wrong")
