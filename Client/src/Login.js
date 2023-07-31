@@ -19,6 +19,7 @@ const Login = () => {
             })
             if (response.data.token && response.status === 200) {
                 sessionStorage.setItem('userToken', response.data.token)
+                console.log(response)
                 navigate("/home")
             }
             else {

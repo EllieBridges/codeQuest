@@ -13,11 +13,9 @@ const Home = () => {
 
     const setQuizType = (quizParam, value) => {
         quizType[quizParam] = value;
-        console.log(quizType)
     }
 
     const startQuiz = () => {
-        console.log(quizType, "blahhhhh")
         if (quizType['level'] && quizType['length']) {
             navigate(`/quiz?length=${quizType['length']}&level=${quizType['level']}`)
         }

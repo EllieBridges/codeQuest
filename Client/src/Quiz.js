@@ -11,9 +11,6 @@ const Quiz = () => {
     const [count, setCount] = useState(0);
 
     const quizQuestions = useRef(getQuestions(level, length));
-    // console.log(quizQuestions, 'quizQuestions')
-    // console.log(quizQuestions.current[count].question)
-    console.log('count', count, quizQuestions.current.length)
 
     const nextQuestion = () => {
         setCount(count + 1)

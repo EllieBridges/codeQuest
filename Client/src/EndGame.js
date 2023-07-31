@@ -10,7 +10,6 @@ const EndGame = ({ finalScore, gameLength, gameLevel }) => {
 
 
     const message = (scorePercentage, level) => {
-        console.log(scorePercentage)
         if (scorePercentage < 50) {
             return "Let's see if we can improve that score";
         }
@@ -53,18 +52,19 @@ const EndGame = ({ finalScore, gameLength, gameLevel }) => {
     }
 
     const newLevel = nextLevel()
-    console.log(newLevel)
 
     return (
         <div className={`endGameContainer ${scorePercentage === 100 ? "firework" : undefined}`}>
             <Title
                 text="GAME OVER"
                 slogan={message(scorePercentage, gameLevel)}
+
             />
             <h2>{`SCORE : ${score}/${quizLength}`}</h2>
             <NextLevelButton
-                link={newLevel ? `/quiz?length=5&level=${newLevel}` : "/"}
+                link={newLevel ? `/quiz?length=5&level=${newLevel}` : "/home"}
                 text={newLevel ? `Try ${newLevel}` : "Return Home"}
+                score={scorePercentage}
             />
         </div>
     )

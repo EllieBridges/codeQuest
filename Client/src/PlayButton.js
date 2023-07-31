@@ -1,7 +1,7 @@
 import React from "react";
 
 const PlayButton = ({ onClick, text, route }) => {
-    return <button onClick={() => onClick()} className={`${text} button`}>{text}</button>
+    return <button onClick={onClick} className={`${text} button`}>{text}</button>
 
 }
 
