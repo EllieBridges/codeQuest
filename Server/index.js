@@ -1,6 +1,9 @@
 const express = require('express');
 
+require('express-async-errors');
+
 const app = express();
+
 
 const port = 3001;
 
@@ -20,22 +23,15 @@ app.use(express.json());
 
 app.use(cors());
 
-app.listen(port, () => {
-    console.log('Server is working');
-});
-
-
-let users = [{ id: 1, username: 'Ellie1', password: 'secrets', level: 'beginner', topScore: '10' }]
-
 
 // Authenticate an existing user
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    const user = users.find((user) => user.username === username);
+    const user = await dbFuncs.getUserByUsername(username);
 
-    if (!user || user.password !== password) {
+    if (!user || user.pw !== password) {
         return res.status(401).json({ message: "Invalid credentials" });
     }
 
@@ -67,7 +63,18 @@ app.post('/score', (req, res) => {
     }
 
     return res.status(200).json({ message })
-
-
-
 })
+
+
+app.use((err, req, res, next) => {
+    console.log(err)
+    res.status(500);
+    res.json({ error: err.message });
+
+    next(err);
+});
+
+
+app.listen(port, () => {
+    console.log('Server is working');
+});
