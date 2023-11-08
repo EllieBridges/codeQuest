@@ -1,6 +1,7 @@
+import { React } from "react";
 import OptionCard from "./OptionCard";
 
-const QuestionCard = ({ question, options, nextQuestion, setPlayerScore }) => {
+const QuestionCard = ({ question, options, nextQuestion, setPlayerScore, answer }) => {
 
 
     return (
@@ -14,6 +15,7 @@ const QuestionCard = ({ question, options, nextQuestion, setPlayerScore }) => {
                             nextQuestion={nextQuestion}
                             option={option}
                             setPlayerScore={setPlayerScore}
+                            answer={answer}
                         />
                     )
                 })}
@@ -21,5 +23,6 @@ const QuestionCard = ({ question, options, nextQuestion, setPlayerScore }) => {
         </div >
     )
 }
+
 
 export default QuestionCard;

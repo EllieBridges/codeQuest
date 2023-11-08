@@ -10,9 +10,11 @@ const Quiz = () => {
 
     const [count, setCount] = useState(0);
 
+
+
     const quizQuestions = useRef(getQuestions(level, length));
 
-    const nextQuestion = () => {
+    const nextQuestion = (option) => {
         setCount(count + 1)
     }
 
@@ -32,9 +34,11 @@ const Quiz = () => {
         (count < length) ? (<div className='quizContainer'>
             <QuestionCard
                 question={quizQuestions.current[count].question}
+                answer={quizQuestions.current[count].answer}
                 options={quizQuestions.current[count].options}
                 nextQuestion={nextQuestion}
                 setPlayerScore={setPlayerScore}
+
             />
         </div>)
             :

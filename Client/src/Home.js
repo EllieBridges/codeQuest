@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import Title from './Title';
 import Selector from './Selector';
 import PlayButton from './PlayButton';
+import Welcome from './Welcome';
 
 
 
@@ -32,6 +33,7 @@ const Home = () => {
             <Title
                 text="CodeQuest"
                 slogan="Test Your Knowledge" />
+            <Welcome />
             <Selector
                 type="level"
                 descriptor="Choose a knowledge level"

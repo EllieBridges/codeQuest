@@ -11,3 +11,7 @@ services:
 
     environment:
       - POSTGRES_PASSWORD=password
+
+    # Seed database with initial tables and data
+    volumes:
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql

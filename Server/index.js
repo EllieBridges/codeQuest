@@ -4,17 +4,21 @@ require('express-async-errors');
 
 const app = express();
 
-
 const port = 3001;
+
 
 const cors = require('cors');
 
+
 const jwt = require('jsonwebtoken');
+
+const jwtKey = 'Melons'
+
 
 // Database
 const dbFuncs = require('./database');
 
-const jwtKey = 'Melons'
+
 
 
 // Middleware
@@ -25,6 +29,7 @@ app.use(cors());
 
 
 // Authenticate an existing user
+
 
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
@@ -40,23 +45,44 @@ app.post('/login', async (req, res) => {
     return res.status(200).json({ message: "Authentication successful", token });
 });
 
+app.get('/score', async (req, res) => {
+
+    const token = jwt.verify(req.headers.authorization, jwtKey);
+
+    const user = await dbFuncs.getUserByUsername(token.username);
+
+    if (!user) {
+        return res.status(401), json({ message: "No user exists" })
+    }
+
+    const score = await dbFuncs.getTopScore(user.user_id)
+
+    return res.status(200).json({ message: "score returned", score });
+
+})
 
 
-app.post('/score', (req, res) => {
+app.post('/score', async (req, res) => {
     const { score } = req.body;
     console.log(req.headers)
 
+    const token = jwt.verify(req.headers.authorization, jwtKey);
+    console.log('token', token.username)
+
+    const user = await dbFuncs.getUserByUsername(token.username);
+
+    console.log('User', user)
+    if (!user) {
+        return res.status(401).json({ message: "No user exists" });
+    }
 
 
-    const token = jwt.verify(req.headers.authorization, jwtKey)
-    console.log('token', token)
-    const user = users.find((user) => token.username === user.username)
-    console.log(user)
+    console.log('score', score)
     let message = ''
 
-    if (score > user.topScore) {
-        // save score
-        message = "You beat your top score"
+    if (score > user.top_score) {
+        await dbFuncs.updateTopScore(user.user_id, score)
+        message = "You beat your top score!"
     }
     else {
         message = "Try to beat your top score!"
