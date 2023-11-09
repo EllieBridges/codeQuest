@@ -1,6 +1,17 @@
-import { useState } from "react";
-const OptionCard = ({ nextQuestion, setPlayerScore, option, answer }) => {
-  const [result, setResult] = useState(null);
+import React from "react";
+
+function OptionCard({
+  nextQuestion,
+  setPlayerScore,
+  option,
+  answer,
+}: {
+  nextQuestion: string;
+  setPlayerScore: (option: string) => void;
+  option: string;
+  answer: string;
+}) {
+  const [result, setResult] = React.useState<string>("");
 
   const highlightResults = () => {
     if (option === answer) {
@@ -24,6 +35,6 @@ const OptionCard = ({ nextQuestion, setPlayerScore, option, answer }) => {
       </div>
     </li>
   );
-};
+}
 
 export default OptionCard;
