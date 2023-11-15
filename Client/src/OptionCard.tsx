@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 function OptionCard({
   nextQuestion,
   setPlayerScore,
   option,
   answer,
+  disableButtons,
+  isDisabled,
+  resetButtons,
 }: {
-  nextQuestion: string;
+  nextQuestion: () => void;
   setPlayerScore: (option: string) => void;
   option: string;
   answer: string;
+  disableButtons: () => void;
+  isDisabled: boolean;
+  resetButtons: () => void;
 }) {
-  const [result, setResult] = React.useState<string>("");
+  const [result, setResult] = useState<string>("");
 
-  const highlightResults = () => {
+  const highlightResults = (): void => {
     if (option === answer) {
       setResult("correct");
     } else {
@@ -21,19 +27,32 @@ function OptionCard({
     }
   };
 
+  const nextQuestReset = (): void => {
+    nextQuestion();
+    setResult("");
+    resetButtons();
+  };
+
   const handleClick = () => {
     highlightResults();
+    disableButtons();
     console.log(result);
-    setTimeout(nextQuestion, 3000, option);
+    setTimeout(nextQuestReset, 1000);
     setPlayerScore(option);
   };
 
   return (
-    <li className={`${result} optionContainer`} onClick={handleClick}>
-      <div>
-        <h3 className="option">{option}</h3>
-      </div>
-    </li>
+    <button
+      className={
+        !isDisabled
+          ? ` enabledOptionContainer optionContainer`
+          : `optionContainer ${result}`
+      }
+      onClick={handleClick}
+      disabled={isDisabled}
+    >
+      <h3 className="option">{option}</h3>
+    </button>
   );
 }
 

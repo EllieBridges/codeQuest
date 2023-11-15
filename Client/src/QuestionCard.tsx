@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import OptionCard from "./OptionCard";
 
 const QuestionCard = ({
   question,
   options,
   nextQuestion,
-  setPlayerScore,
+  playerScore,
   answer,
+}: {
+  question: string;
+  options: string[];
+  nextQuestion: () => void;
+  playerScore: (option: string) => number;
+  answer: string;
 }) => {
+  // const [clicked, setClicked] = useState<boolean>(false);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
+
+  const disableButtons = () => {
+    setIsDisabled(true);
+  };
+
+  const resetButtons = () => {
+    setIsDisabled(false);
+  };
+
   return (
     <div className="questionCard">
       <h1 className="question">{question}</h1>
@@ -15,11 +32,14 @@ const QuestionCard = ({
         {options.map((option, i) => {
           return (
             <OptionCard
+              isDisabled={isDisabled}
               key={i}
               nextQuestion={nextQuestion}
               option={option}
-              setPlayerScore={setPlayerScore}
+              setPlayerScore={playerScore}
               answer={answer}
+              disableButtons={disableButtons}
+              resetButtons={resetButtons}
             />
           );
         })}

@@ -6,12 +6,18 @@ function NextLevelButton({
   link,
   text,
   score,
+  handleClick,
 }: {
   link: string;
   text: string;
   score: number;
+  handleClick: () => void;
 }) {
-  const handleClick = async () => {
+  const resetGame = () => {
+    handleClick();
+  };
+
+  const handleSubmit = async () => {
     try {
       const response = await axios.post(
         "http://localhost:3001/score",
@@ -20,6 +26,7 @@ function NextLevelButton({
         },
         { headers: { authorization: sessionStorage.getItem("userToken") } }
       );
+      resetGame();
       console.log("response", response);
     } catch (err) {
       console.log(err);
@@ -30,7 +37,7 @@ function NextLevelButton({
     <Link to={link} reloadDocument>
       <button
         data-testid="nextQuizButton"
-        onClick={handleClick}
+        onClick={handleSubmit}
         className="button"
       >
         {text}

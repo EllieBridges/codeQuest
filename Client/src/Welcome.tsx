@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Welcome = () => {
+const Welcome = ({ isAuth }: { isAuth: string }) => {
   const [topScore, setTopScore] = useState("");
 
   useEffect(() => {
@@ -16,11 +16,14 @@ const Welcome = () => {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
+  const content = isAuth
+    ? `Your current high score is ${topScore}`
+    : "Login to see your top score";
   return (
-    <div>
-      <h2 className="scoreReturn">Your current high score is {topScore} </h2>
+    <div className="welcomeContainer">
+      <h2 className="scoreReturn">{content} </h2>
     </div>
   );
 };

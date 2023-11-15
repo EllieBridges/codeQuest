@@ -2,15 +2,17 @@ import React from "react";
 import NextLevelButton from "./NextLevelButton";
 import Title from "./Title";
 
-const EndGame = ({
+function EndGame({
   finalScore,
   gameLength,
   gameLevel,
+  handleClick,
 }: {
   finalScore: number;
   gameLength: number;
   gameLevel: string;
-}) => {
+  handleClick: () => void;
+}) {
   const quizLength = Number(gameLength);
   const score = Number(finalScore);
   const scorePercentage = (score / quizLength) * 100;
@@ -61,12 +63,13 @@ const EndGame = ({
       <Title text="GAME OVER" slogan={message(scorePercentage, gameLevel)} />
       <h2>{`SCORE : ${score}/${quizLength}`}</h2>
       <NextLevelButton
-        link={newLevel ? `/quiz?length=5&level=${newLevel}` : "/home"}
+        link={newLevel ? `/quiz?length=5&level=${newLevel}` : "/quiz"}
         text={newLevel ? `Try ${newLevel}` : "Return Home"}
         score={scorePercentage}
+        handleClick={handleClick}
       />
     </div>
   );
-};
+}
 
 export default EndGame;

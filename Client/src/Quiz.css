@@ -1,0 +1,6 @@
+.quizConfigContainer {
+    text-align: center;
+    font-family: 'Bungee Hairline', cursive;
+    height: 100vh;
+    z-index: 2;
+}

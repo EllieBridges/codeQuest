@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Countdown = () => {
+function Countdown() {
   const [count, setCount] = useState(3);
 
   useEffect(() => {
@@ -24,6 +24,6 @@ const Countdown = () => {
       <h1>{count}</h1>
     </div>
   );
-};
+}
 
 export default Countdown;

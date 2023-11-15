@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, MouseEvent } from "react";
 import QuizConfig from "./QuizConfig";
 import Playing from "./Playing";
+import Nav from "./Nav";
+import "Quiz.css";
 
-const Quiz = () => {
-  const navigate = useNavigate();
-
+const Quiz = ({ isAuth }: { isAuth: string }) => {
   const [play, setPlay] = useState(false);
-  const [quizLevel, setQuizLevel] = useState(null);
-  const [quizLength, setQuizLength] = useState(null);
+  const [quizLevel, setQuizLevel] = useState<string>("");
+  const [quizLength, setQuizLength] = useState<string>("");
 
-  const chooseLevel = (event: React.MouseEvent<HTMLElement>) => {
+  const chosenLevel = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    console.log(event.target);
+    //fix any
+    setQuizLevel((event.target as any).value);
   };
 
-  const chooseLength = (event: React.MouseEvent<HTMLElement>) => {
+  //fix any
+  const chosenLength = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    console.log(event.target);
+    setQuizLength((event.target as any).value);
   };
 
-  const startQuiz = () => {
+  const startQuiz = (): void => {
     if (quizLevel && quizLength) {
       setPlay(true);
-      navigate(`/quiz?length=${quizLength}&level=${quizLevel}`);
     } else if (quizLevel) {
       alert("Choose how many questions you'd like to begin playing");
     } else {
@@ -31,16 +31,26 @@ const Quiz = () => {
     }
   };
 
+  const restartGame = (): void => {
+    setPlay(false);
+  };
+
   return (
-    <div className="QuizContainer">
+    <div className="QuizContainer container">
+      <Nav page="login" />
       {!play ? (
         <QuizConfig
           handleClick={startQuiz}
-          level={chooseLevel}
-          length={chooseLength}
+          chooseLevel={chosenLevel}
+          chooseLength={chosenLength}
+          isAuth={isAuth}
         />
       ) : (
-        <Playing />
+        <Playing
+          level={quizLevel}
+          length={parseInt(quizLength)}
+          handleClick={restartGame}
+        />
       )}
     </div>
   );

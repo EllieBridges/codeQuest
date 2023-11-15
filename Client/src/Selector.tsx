@@ -1,35 +1,38 @@
-import React, { useState } from "react";
-import Button from "./SelectorButton";
+import React, { useState, MouseEvent } from "react";
+import SelectorButton from "./SelectorButton";
 
 const Selector = ({
   type,
   descriptor,
   buttons,
-  quizType,
+  makeQuiz,
 }: {
   type: string;
   descriptor: string;
   buttons: string[];
-  quizType: (event: React.MouseEvent<HTMLElement>) => void;
+  makeQuiz: (event: MouseEvent<HTMLElement>) => void;
 }) => {
-  const [selected, setSelected] = useState();
+  const [highlightedButton, setHighlightedButton] = useState<string | null>(
+    null
+  );
 
-  const handleClick = (button) => {
-    setSelected(button);
-    quizType(type, button);
+  const handleClick = (event: MouseEvent<HTMLElement>, value: string) => {
+    setHighlightedButton(value);
+    makeQuiz(event);
   };
 
   return (
-    <div className={`${type}Container`}>
+    <div className={`${type}container configSelector`}>
       <h2 className="descriptor">{descriptor}</h2>
-      <div className={`buttonContainer`}>
+      <div className={`${type}buttonContainer`}>
         {buttons.map((button) => {
           return (
-            <Button
+            <SelectorButton
               key={button}
               text={button}
-              onClick={handleClick}
-              highlight={selected === button}
+              handleClick={handleClick}
+              value={button}
+              isHighlighted={highlightedButton === button}
             />
           );
         })}

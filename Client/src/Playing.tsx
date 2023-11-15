@@ -1,28 +1,34 @@
 import React, { useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { getQuestions } from "./questions";
+import { Question, getQuestions, intermediate } from "./questions";
 import QuestionCard from "./QuestionCard";
 import EndGame from "./EndGame";
 
-function Playing() {
-  const [searchParams] = useSearchParams();
-  const { level, length } = Object.fromEntries([...searchParams]);
-
+function Playing({
+  level,
+  length,
+  handleClick,
+}: {
+  level: string;
+  length: number;
+  handleClick: () => void;
+}) {
   const [count, setCount] = useState(0);
 
-  const quizQuestions = useRef(getQuestions(level, length));
+  const quizQuestions = useRef<Question[]>(intermediate);
+
+  quizQuestions.current = getQuestions(level, length);
+
+  let points = useRef<number>(0);
 
   const nextQuestion = () => {
     setCount(count + 1);
   };
 
-  let points = useRef(0);
-
-  const setPlayerScore = (option: string) => {
+  const playerScore = (option: string): number => {
     if (quizQuestions.current[count].answer === option) {
       points.current++;
     }
-    return points;
+    return points.current;
   };
 
   return count < length ? (
@@ -32,7 +38,7 @@ function Playing() {
         answer={quizQuestions.current[count].answer}
         options={quizQuestions.current[count].options}
         nextQuestion={nextQuestion}
-        setPlayerScore={setPlayerScore}
+        playerScore={playerScore}
       />
     </div>
   ) : (
@@ -40,6 +46,7 @@ function Playing() {
       gameLength={length}
       gameLevel={level}
       finalScore={points.current}
+      handleClick={handleClick}
     />
   );
 }
