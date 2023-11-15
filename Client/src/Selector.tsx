@@ -1,5 +1,6 @@
 import React, { useState, MouseEvent } from "react";
 import SelectorButton from "./SelectorButton";
+import "./Selector.css";
 
 const Selector = ({
   type,

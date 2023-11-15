@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Welcome.css";
 
 const Welcome = ({ isAuth }: { isAuth: string }) => {
   const [topScore, setTopScore] = useState("");

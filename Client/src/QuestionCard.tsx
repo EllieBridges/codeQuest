@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import OptionCard from "./OptionCard";
+import "QuestionCard.css";
 
 const QuestionCard = ({
   question,

@@ -2,7 +2,7 @@ import React, { useState, MouseEvent } from "react";
 import QuizConfig from "./QuizConfig";
 import Playing from "./Playing";
 import Nav from "./Nav";
-import "Quiz.css";
+import "./Quiz.css";
 
 const Quiz = ({ isAuth }: { isAuth: string }) => {
   const [play, setPlay] = useState(false);

@@ -1,0 +1,48 @@
+.optionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+    padding: 0px;
+    width: 350px;
+    height: 200px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #469bbd;
+}
+
+
+.enabledOptionContainer:hover {
+    background-color: #469bbd;
+    border-color: #c4ff00;
+}
+
+
+.option {
+    font-size: 1.5rem;
+    /* justify-content: 'center';
+    padding: auto 0px; */
+}
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
+}
+
+@media only screen and (max-width: 750px) {
+    .optionContainer {
+        width: 200px;
+        height: fit-content;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .option {
+        font-size: 1rem;
+    }
+
+    
+}

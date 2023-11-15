@@ -1,0 +1,14 @@
+.welcomeContainer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.scoreReturn {
+    color: #FF5F1F;
+}
+
+@media only screen and (max-width: 750px) {
+    .scoreReturn{
+        font-size: 1rem;
+    }
+}

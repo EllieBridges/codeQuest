@@ -3,6 +3,7 @@ import Title from "./Title";
 import Selector from "./Selector";
 import PlayButton from "./PlayButton";
 import Welcome from "./Welcome";
+import "./QuizConfig.css";
 
 function QuizConfig({
   chooseLevel,

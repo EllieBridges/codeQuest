@@ -1,0 +1,27 @@
+.titleContainer {
+    z-index:2;
+    padding: 50px;
+}
+
+.title {
+    font-family: 'Bungee Hairline', cursive;
+    font-size: 7rem;
+    color: #c4ff00;
+    margin:0px;
+}
+
+.slogan {
+    font-family: 'Bungee Hairline', cursive;
+    margin: 0;
+
+}
+
+@media only screen and (max-width: 750px) {
+    .titleContainer {
+        padding: 5px;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+}

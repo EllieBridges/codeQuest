@@ -1,0 +1,33 @@
+.levelContainer {
+    margin: 100px auto;
+    z-index: 2;
+}
+
+.lengthContainer {
+    margin: 100px auto;
+    margin-bottom: 50px;
+    z-index: 2;
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.descriptor {
+    font-size: 2rem;
+}
+
+
+
+@media only screen and (max-width: 750px) {
+    .descriptor{
+        font-size: 1.5rem;}
+
+    .buttonContainer {
+        flex-direction: column;
+        }
+}
